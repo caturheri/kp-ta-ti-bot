@@ -14,7 +14,7 @@ def start(update, context):
     welcome_message = ("Selamat Datang di Chatbot Layanan Informasi Kerja Praktek dan Tugas Akhir Program Studi Teknik Informatika Universitas Semarang.\n\n"
                        "Pilih Informasi yang ingin Anda cari:")
 
-    options = [['💼 Kerja Praktek', '🎓 Tugas Akhir']]
+    options = [['💼 Kerja Praktek'], ['🎓 Tugas Akhir']]
 
     reply_markup = ReplyKeyboardMarkup(options, one_time_keyboard=True, resize_keyboard=True)
 
