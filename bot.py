@@ -79,11 +79,11 @@ def handle_message(update, context):
     elif user_text == 'Lainnya' or user_text == 'Kembali':
         info_type = context.user_data.get('info_type')
         if info_type == 'KP' and user_text == 'Lainnya':
-            kp_options_more = [['Penulisan Laporan KP', 'Lampiran KP'], ['Syarat Seminar KP', 'Daftar Seminar KP'], ['Tata Cara Seminar KP', 'Syarat Pakaian Seminar KP'], ['Revisi Laporan KP', 'Penyerahan Laporan KP'], ['Penilaian KP','Konversi MBKM & PKM'], ['Kembali']]
+            kp_options_more = [['Penulisan Laporan KP', 'Lampiran KP'], ['Syarat Seminar KP', 'Daftar Seminar KP'], ['Tata Cara Seminar KP', 'Syarat Pakaian Seminar KP'], ['Revisi Laporan KP', 'Penyerahan Berkas KP'], ['Penilaian KP','Konversi MBKM & PKM'], ['Kembali']]
             kp_reply_markup_more = ReplyKeyboardMarkup(kp_options_more, one_time_keyboard=True, resize_keyboard=True)
             update.message.reply_text("Pilih Informasi Kerja Praktek Lainnya yang ingin Anda cari:", reply_markup=kp_reply_markup_more)
         elif info_type == 'TA' and user_text == 'Lainnya':
-            ta_options_more = [['Lampiran TA', 'Daftar Sidang & Revisi TA'], ['Tata Cara Sidang TA', 'Syarat Pakaian Sidang TA'], ['Penyerahan Kelengkapan Berkas TA'], ['Kembali']]
+            ta_options_more = [['Lampiran TA', 'Daftar Sidang & Revisi TA'], ['Tata Cara Sidang TA', 'Syarat Pakaian Sidang TA'], ['Penyerahan Berkas TA'], ['Kembali']]
             ta_reply_markup_more = ReplyKeyboardMarkup(ta_options_more, one_time_keyboard=True, resize_keyboard=True)
             update.message.reply_text("Pilih Informasi Tugas Akhir Lainnya yang ingin Anda cari:", reply_markup=ta_reply_markup_more)
         elif user_text == 'Kembali':
