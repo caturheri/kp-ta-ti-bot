@@ -28,7 +28,7 @@ def kerja_praktek(update, context):
     update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
 
 def tugas_akhir(update, context):
-    ta_options = [['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Bimbingan TA', 'Penulisan Proposal & Laporan TA'], ['Lainnya']]
+    ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
     ta_reply_markup = ReplyKeyboardMarkup(ta_options, one_time_keyboard=True, resize_keyboard=True)
     context.user_data['info_type'] = 'TA'
     update.message.reply_text("Pilih Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
@@ -68,7 +68,7 @@ def handle_message(update, context):
         update.message.reply_photo("https://firebasestorage.googleapis.com/v0/b/kp-ta-usm.appspot.com/o/Konversi%20MBKM%20%26%20PKM-KP.jpg?alt=media&token=b2eab428-4320-433c-ae12-e7b85f4b94cf", caption="Diatas merupakan Alur Konversi MBKM dan PKM untuk Kerja Praktek.\nTopik/Konsentrasi Kerja Praktek sesuai dengan Proyek Akhir yang dikerjakan pada MBKM atau PKM.\nKonversi MBKM dan PKM dilakukan setelah melakukan Seminar/Ujian Kerja Prakterk.", reply_markup=back_reply_markup)
     elif user_text == '🎓 Tugas Akhir':
         context.user_data['info_type'] = 'TA'
-        ta_options = [['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Bimbingan TA', 'Penulisan Proposal & Laporan TA'], ['Lainnya']]
+        ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
         ta_reply_markup = ReplyKeyboardMarkup(ta_options, one_time_keyboard=True, resize_keyboard=True)
         update.message.reply_text("Pilih Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
     elif user_text == 'Topik TA':
@@ -83,7 +83,7 @@ def handle_message(update, context):
             kp_reply_markup_more = ReplyKeyboardMarkup(kp_options_more, one_time_keyboard=True, resize_keyboard=True)
             update.message.reply_text("Pilih Informasi Kerja Praktek Lainnya yang ingin Anda cari:", reply_markup=kp_reply_markup_more)
         elif info_type == 'TA' and user_text == 'Lainnya':
-            ta_options_more = [['Lampiran TA', 'Daftar Sidang & Revisi TA'], ['Tata Cara Sidang TA', 'Syarat Pakaian Sidang TA'], ['Penyerahan Berkas TA', 'Rekognisi Jurnal TA (RKPM)'], ['Kembali']]
+            ta_options_more = [['Bimbingan TA', 'Penulisan Proposal & Laporan TA'], ['Lampiran TA', 'Daftar Sidang & Revisi TA'], ['Tata Cara Sidang TA', 'Syarat Pakaian Sidang TA'], ['Penyerahan Berkas TA', 'Rekognisi Jurnal TA (RKPM)'], ['Kembali']]
             ta_reply_markup_more = ReplyKeyboardMarkup(ta_options_more, one_time_keyboard=True, resize_keyboard=True)
             update.message.reply_text("Pilih Informasi Tugas Akhir Lainnya yang ingin Anda cari:", reply_markup=ta_reply_markup_more)
         elif user_text == 'Kembali':
@@ -93,7 +93,7 @@ def handle_message(update, context):
                 kp_reply_markup = ReplyKeyboardMarkup(kp_options, one_time_keyboard=True, resize_keyboard=True)
                 update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
             elif info_type == 'TA':
-                ta_options = [['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Bimbingan TA', 'Penulisan Proposal & Laporan TA'], ['Lainnya']]
+                ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
                 ta_reply_markup = ReplyKeyboardMarkup(ta_options, one_time_keyboard=True, resize_keyboard=True)
                 update.message.reply_text("Pilih Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
     elif update.message.text:
