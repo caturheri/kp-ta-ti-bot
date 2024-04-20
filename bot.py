@@ -6,6 +6,7 @@ from telegram import ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logging.getLogger("telegram.vendor.ptb_urllib3.urllib3").setLevel(logging.ERROR)
 logger = logging.getLogger(__name__)
 
 load_dotenv()
@@ -139,7 +140,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
 
     # Mulai bot
-    updater.start_polling()
+    updater.start_polling(drop_pending_updates=True)
 
     logger.info("Bot started polling...")
 
