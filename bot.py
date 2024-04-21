@@ -14,11 +14,8 @@ load_dotenv()
 def start(update, context):
     welcome_message = ("Selamat Datang di Chatbot Layanan Informasi Kerja Praktek dan Tugas Akhir Program Studi Teknik Informatika Universitas Semarang.\n\n"
                        "Pilih Informasi yang ingin Anda cari:")
-
     options = [['💼 Kerja Praktek'], ['🎓 Tugas Akhir']]
-
     reply_markup = ReplyKeyboardMarkup(options, one_time_keyboard=True, resize_keyboard=True)
-
     update.message.reply_text(welcome_message, reply_markup=reply_markup)
 
 def kerja_praktek(update, context):
@@ -33,7 +30,6 @@ def tugas_akhir(update, context):
     ta_reply_markup = ReplyKeyboardMarkup(ta_options, one_time_keyboard=True, resize_keyboard=True)
     context.user_data['info_type'] = 'TA'
     update.message.reply_text("Pilih Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
-
 
 def handle_message(update, context):
     user_text = update.message.text
@@ -120,31 +116,21 @@ def handle_message(update, context):
         else:
             update.message.reply_text("Maaf, terjadi kesalahan dalam mengambil informasi. Silakan coba lagi nanti.")
     else:
-        # Echo balik pesan yang diterima jika bukan pilihan yang didukung
         update.message.reply_text("Jawaban Tidak Ditemukan.")
 
-# Fungsi utama untuk menjalankan bot
 def main():
-
-    # Buat updater untuk bot
     updater = Updater(os.getenv('TOKEN'), use_context=True)
-
-    # Dapatkan dispatcher untuk menangani perintah dan pesan
     dp = updater.dispatcher
-
-    # Daftarkan handler untuk perintah /start
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("kerjapraktek", kerja_praktek))
     dp.add_handler(CommandHandler("tugasakhir", tugas_akhir))
 
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
 
-    # Mulai bot
     updater.start_polling(drop_pending_updates=True)
 
     logger.info("Bot started polling...")
 
-    # Biarkan bot berjalan hingga dihentikan secara manual
     updater.idle()
 
 if __name__ == '__main__':
