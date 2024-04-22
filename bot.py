@@ -62,7 +62,7 @@ def handle_message(update, context):
         back_option = [['Kembali']]
         back_reply_markup = ReplyKeyboardMarkup(back_option, one_time_keyboard=True, resize_keyboard=True)
         context.user_data['info_type'] = 'KP'
-        update.message.reply_photo("https://firebasestorage.googleapis.com/v0/b/kp-ta-usm.appspot.com/o/Konversi%20MBKM%20%26%20PKM-KP.jpg?alt=media&token=b2eab428-4320-433c-ae12-e7b85f4b94cf", caption="Diatas merupakan Alur Konversi MBKM dan PKM untuk Kerja Praktek.\nTopik/Konsentrasi Kerja Praktek sesuai dengan Proyek Akhir yang dikerjakan pada MBKM atau PKM.\nKonversi MBKM dan PKM dilakukan setelah melakukan Seminar/Ujian Kerja Prakterk.", reply_markup=back_reply_markup)
+        update.message.reply_photo("https://firebasestorage.googleapis.com/v0/b/kp-ta-usm.appspot.com/o/Konversi%20MBKM%20%26%20PKM-KP.jpg?alt=media&token=b2eab428-4320-433c-ae12-e7b85f4b94cf", caption="Diatas merupakan Alur Konversi MBKM dan PKM untuk Kerja Praktek.\nTopik/Konsentrasi Kerja Praktek sesuai dengan Proyek Akhir yang dikerjakan pada MBKM atau PKM.\nKonversi MBKM dan PKM dilakukan setelah melakukan Seminar/Ujian Kerja Praktek.", reply_markup=back_reply_markup)
     elif user_text == '🎓 Tugas Akhir':
         context.user_data['info_type'] = 'TA'
         ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
