@@ -58,11 +58,11 @@ def handle_message(update, context):
         back_reply_markup = ReplyKeyboardMarkup(back_option, one_time_keyboard=True, resize_keyboard=True)
         context.user_data['info_type'] = 'KP'
         update.message.reply_photo("https://firebasestorage.googleapis.com/v0/b/kp-ta-usm.appspot.com/o/Alur%20Revisi%20Laporan%20KP%20di%20SIMA.png?alt=media&token=e7b9f46b-ff70-4e3d-9dc5-f1087fedf6b0", caption="Diatas merupakan Alur Revisi Laporan Kerja Praktek di SIMA.\nRevisi laporan maksimal 1 minggu dari tanggal seminar dan dikumpulkan maksimal 1 minggu setelah ACC revisi.", reply_markup=back_reply_markup)
-    elif user_text == 'Konversi MBKM & PKM':
+    elif user_text == 'Konversi MBKM & RKPM':
         back_option = [['Kembali']]
         back_reply_markup = ReplyKeyboardMarkup(back_option, one_time_keyboard=True, resize_keyboard=True)
         context.user_data['info_type'] = 'KP'
-        update.message.reply_photo("https://firebasestorage.googleapis.com/v0/b/kp-ta-usm.appspot.com/o/Konversi%20MBKM%20%26%20PKM-KP.jpg?alt=media&token=b2eab428-4320-433c-ae12-e7b85f4b94cf", caption="Diatas merupakan Alur Konversi MBKM dan PKM untuk Kerja Praktek.\nTopik/Konsentrasi Kerja Praktek sesuai dengan Proyek Akhir yang dikerjakan pada MBKM atau PKM.\nKonversi MBKM dan PKM dilakukan setelah melakukan Seminar/Ujian Kerja Praktek.", reply_markup=back_reply_markup)
+        update.message.reply_photo("https://firebasestorage.googleapis.com/v0/b/kp-ta-usm.appspot.com/o/Konversi%20MBKM%20%26%20PKM-KP.jpg?alt=media&token=b2eab428-4320-433c-ae12-e7b85f4b94cf", caption="Diatas merupakan Alur Konversi MBKM dan RKPM untuk Kerja Praktek.\nTopik/Konsentrasi Kerja Praktek sesuai dengan Proyek Akhir yang dikerjakan pada MBKM atau PKM.\nKonversi MBKM dan RKPM dilakukan setelah melakukan Seminar/Ujian Kerja Praktek.", reply_markup=back_reply_markup)
     elif user_text == '🎓 Tugas Akhir':
         context.user_data['info_type'] = 'TA'
         ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
@@ -76,7 +76,7 @@ def handle_message(update, context):
     elif user_text == 'Lainnya' or user_text == 'Kembali':
         info_type = context.user_data.get('info_type')
         if info_type == 'KP' and user_text == 'Lainnya':
-            kp_options_more = [['Penulisan Laporan KP', 'Lampiran KP'], ['Syarat Seminar KP', 'Daftar Seminar KP'], ['Tata Cara Seminar KP', 'Syarat Pakaian Seminar KP'], ['Revisi Laporan KP', 'Penyerahan Berkas KP'], ['Penilaian KP','Konversi MBKM & PKM'], ['Kembali']]
+            kp_options_more = [['Penulisan Laporan KP', 'Lampiran KP'], ['Syarat Seminar KP', 'Daftar Seminar KP'], ['Tata Cara Seminar KP', 'Syarat Pakaian Seminar KP'], ['Revisi Laporan KP', 'Penyerahan Berkas KP'], ['Penilaian KP','Konversi MBKM & RKPM'], ['Kembali']]
             kp_reply_markup_more = ReplyKeyboardMarkup(kp_options_more, one_time_keyboard=True, resize_keyboard=True)
             update.message.reply_text("Pilih Informasi Kerja Praktek Lainnya yang ingin Anda cari:", reply_markup=kp_reply_markup_more)
         elif info_type == 'TA' and user_text == 'Lainnya':
