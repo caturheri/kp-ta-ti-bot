@@ -20,7 +20,7 @@ def start(update, context):
 
 def kerja_praktek(update, context):
     global kp_options, kp_reply_markup
-    kp_options = [['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'],['Bimbingan KP','Pengerjaan Laporan KP'], ['Lainnya']]
+    kp_options = [['Bentuk KP'], ['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'],['Bimbingan KP','Pengerjaan Laporan KP'], ['Lainnya']]
     kp_reply_markup = ReplyKeyboardMarkup(kp_options, one_time_keyboard=True, resize_keyboard=True)
     context.user_data['info_type'] = 'KP'
     update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
@@ -35,7 +35,7 @@ def handle_message(update, context):
     user_text = update.message.text
     if user_text == '💼 Kerja Praktek':
         context.user_data['info_type'] = 'KP'
-        kp_options = [['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'],['Bimbingan KP','Pengerjaan Laporan KP'], ['Lainnya']]
+        kp_options = [['Bentuk KP'], ['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'],['Bimbingan KP','Pengerjaan Laporan KP'], ['Lainnya']]
         kp_reply_markup = ReplyKeyboardMarkup(kp_options, one_time_keyboard=True, resize_keyboard=True)
         update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
     elif user_text == 'Bidang Magang KP':
@@ -86,7 +86,7 @@ def handle_message(update, context):
         elif user_text == 'Kembali':
             info_type = context.user_data.get('info_type')
             if info_type == 'KP':
-                kp_options = [['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'], ['Bimbingan KP', 'Pengerjaan Laporan KP'], ['Lainnya']]
+                kp_options = [['Bentuk KP'], ['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'], ['Bimbingan KP', 'Pengerjaan Laporan KP'], ['Lainnya']]
                 kp_reply_markup = ReplyKeyboardMarkup(kp_options, one_time_keyboard=True, resize_keyboard=True)
                 update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
             elif info_type == 'TA':
