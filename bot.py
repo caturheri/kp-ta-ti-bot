@@ -80,7 +80,7 @@ def handle_message(update, context):
             kp_reply_markup_more = ReplyKeyboardMarkup(kp_options_more, one_time_keyboard=True, resize_keyboard=True)
             update.message.reply_text("Pilih Informasi Kerja Praktek Lainnya yang ingin Anda cari:", reply_markup=kp_reply_markup_more)
         elif info_type == 'TA' and user_text == 'Lainnya':
-            ta_options_more = [['Bimbingan TA', 'Penulisan Proposal & Laporan TA'], ['Lampiran TA', 'Daftar Sidang & Revisi TA'], ['Tata Cara Sidang TA', 'Syarat Pakaian Sidang TA'], ['Penyerahan Berkas TA', 'RKPM TA'], ['Kembali']]
+            ta_options_more = [['Bimbingan TA', 'Penulisan Proposal & Laporan TA'], ['Lampiran TA', 'Daftar Sidang & Revisi TA'], ['Tata Cara Sidang TA', 'Syarat Pakaian Sidang TA'], ['Penyerahan Berkas TA', 'Alur RKPM TA'], ['Kembali']]
             ta_reply_markup_more = ReplyKeyboardMarkup(ta_options_more, one_time_keyboard=True, resize_keyboard=True)
             update.message.reply_text("Pilih Informasi Tugas Akhir Lainnya yang ingin Anda cari:", reply_markup=ta_reply_markup_more)
         elif user_text == 'Kembali':
