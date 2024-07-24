@@ -12,24 +12,10 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 
 def start(update, context):
-    welcome_message = ("Selamat Datang di Chatbot Layanan Informasi Kerja Praktek dan Tugas Akhir Program Studi Teknik Informatika Universitas Semarang.\n\n"
-                       "Pilih Informasi yang ingin Anda cari:")
+    welcome_message = ("Halo, Selamat datang!\n\n""Saya SIKAPTA, asisten virtual yang siap membantu Anda mendapatkan informasi seputar Kerja Praktek dan Tugas Akhir di Program Studi Teknik Informatika, Universitas Semarang.\n\n""Yuk, pilih informasi yang ingin Anda cari:")
     options = [['💼 Kerja Praktek'], ['🎓 Tugas Akhir']]
     reply_markup = ReplyKeyboardMarkup(options, one_time_keyboard=True, resize_keyboard=True)
     update.message.reply_text(welcome_message, reply_markup=reply_markup)
-
-def kerja_praktek(update, context):
-    global kp_options, kp_reply_markup
-    kp_options = [['Bentuk KP'], ['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'],['Bimbingan KP','Pengerjaan Laporan KP'], ['Lainnya']]
-    kp_reply_markup = ReplyKeyboardMarkup(kp_options, one_time_keyboard=True, resize_keyboard=True)
-    context.user_data['info_type'] = 'KP'
-    update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
-
-def tugas_akhir(update, context):
-    ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
-    ta_reply_markup = ReplyKeyboardMarkup(ta_options, one_time_keyboard=True, resize_keyboard=True)
-    context.user_data['info_type'] = 'TA'
-    update.message.reply_text("Pilih Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
 
 def handle_message(update, context):
     user_text = update.message.text
@@ -37,7 +23,7 @@ def handle_message(update, context):
         context.user_data['info_type'] = 'KP'
         kp_options = [['Bentuk KP'], ['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'],['Bimbingan KP','Pengerjaan Laporan KP'], ['Lainnya']]
         kp_reply_markup = ReplyKeyboardMarkup(kp_options, one_time_keyboard=True, resize_keyboard=True)
-        update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
+        update.message.reply_text("Pilih Topik Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
     elif user_text == 'Bidang Magang KP':
         back_option = [['Kembali']]
         back_reply_markup = ReplyKeyboardMarkup(back_option, one_time_keyboard=True, resize_keyboard=True)
@@ -67,7 +53,7 @@ def handle_message(update, context):
         context.user_data['info_type'] = 'TA'
         ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
         ta_reply_markup = ReplyKeyboardMarkup(ta_options, one_time_keyboard=True, resize_keyboard=True)
-        update.message.reply_text("Pilih Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
+        update.message.reply_text("Pilih Topik Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
     elif user_text == 'Topik TA':
         back_option = [['Kembali']]
         back_reply_markup = ReplyKeyboardMarkup(back_option, one_time_keyboard=True, resize_keyboard=True)
@@ -78,21 +64,21 @@ def handle_message(update, context):
         if info_type == 'KP' and user_text == 'Lainnya':
             kp_options_more = [['Penulisan Laporan KP', 'Lampiran KP'], ['Syarat Seminar KP', 'Daftar Seminar KP'], ['Tata Cara Seminar KP', 'Syarat Pakaian Seminar KP'], ['Revisi Laporan KP', 'Penyerahan Berkas KP'], ['Penilaian KP','Konversi MBKM & RKPM'], ['Kembali']]
             kp_reply_markup_more = ReplyKeyboardMarkup(kp_options_more, one_time_keyboard=True, resize_keyboard=True)
-            update.message.reply_text("Pilih Informasi Kerja Praktek Lainnya yang ingin Anda cari:", reply_markup=kp_reply_markup_more)
+            update.message.reply_text("Pilih Topik Informasi Kerja Praktek Lainnya yang ingin Anda cari:", reply_markup=kp_reply_markup_more)
         elif info_type == 'TA' and user_text == 'Lainnya':
             ta_options_more = [['Bimbingan TA', 'Penulisan Proposal & Laporan TA'], ['Lampiran TA', 'Daftar Sidang & Revisi TA'], ['Tata Cara Sidang TA', 'Syarat Pakaian Sidang TA'], ['Penyerahan Berkas TA', 'Alur RKPM TA'], ['Kembali']]
             ta_reply_markup_more = ReplyKeyboardMarkup(ta_options_more, one_time_keyboard=True, resize_keyboard=True)
-            update.message.reply_text("Pilih Informasi Tugas Akhir Lainnya yang ingin Anda cari:", reply_markup=ta_reply_markup_more)
+            update.message.reply_text("Pilih Topik Informasi Tugas Akhir Lainnya yang ingin Anda cari:", reply_markup=ta_reply_markup_more)
         elif user_text == 'Kembali':
             info_type = context.user_data.get('info_type')
             if info_type == 'KP':
                 kp_options = [['Bentuk KP'], ['Syarat KP', 'Biaya KP'], ['Prosedur Administrasi KP', 'Koordinator KP'], ['Bidang Magang KP', 'Pengajuan Judul KP'], ['Bimbingan KP', 'Pengerjaan Laporan KP'], ['Lainnya']]
                 kp_reply_markup = ReplyKeyboardMarkup(kp_options, one_time_keyboard=True, resize_keyboard=True)
-                update.message.reply_text("Pilih Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
+                update.message.reply_text("Pilih Topik Informasi Kerja Praktek yang ingin Anda cari:", reply_markup=kp_reply_markup)
             elif info_type == 'TA':
                 ta_options = [['Bentuk TA'], ['Ketentuan TA Reguler', 'Ketentuan TA RKPM'], ['Syarat TA', 'Biaya TA'], ['Topik TA', 'Koordinator TA'], ['Penilaian TA', 'Pengajuan Judul TA'], ['Lainnya']]
                 ta_reply_markup = ReplyKeyboardMarkup(ta_options, one_time_keyboard=True, resize_keyboard=True)
-                update.message.reply_text("Pilih Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
+                update.message.reply_text("Pilih Topik Informasi Tugas Akhir yang ingin Anda cari:", reply_markup=ta_reply_markup)
     elif update.message.text:
         user_question = update.message.text
         payload = {"question": user_question.lower()}
@@ -119,12 +105,9 @@ def handle_message(update, context):
         update.message.reply_text("Jawaban Tidak Ditemukan.")
 
 def main():
-    updater = Updater(os.getenv('TOKEN'), use_context=True)
+    updater = Updater((os.getenv('TOKEN_BOT')), use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("kerjapraktek", kerja_praktek))
-    dp.add_handler(CommandHandler("tugasakhir", tugas_akhir))
-
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
 
     updater.start_polling(drop_pending_updates=True)
